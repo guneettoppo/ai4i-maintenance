@@ -1,0 +1,222 @@
+{
+  "dataset": {
+    "rows": 10000,
+    "columns": 14,
+    "failures": 339,
+    "failure_rate_pct": 3.39,
+    "missing_values": 0,
+    "type_counts": {
+      "L": 6000,
+      "M": 2997,
+      "H": 1003
+    },
+    "mode_counts": {
+      "TWF": 46,
+      "HDF": 115,
+      "PWF": 95,
+      "OSF": 98,
+      "RNF": 19
+    },
+    "rows_with_multiple_modes": 24,
+    "label_inconsistencies": {
+      "flag_1_no_mode": 9,
+      "mode_set_flag_0": 18
+    },
+    "feature_range": {
+      "Air temperature [K]": {
+        "min": 295.3,
+        "max": 304.5,
+        "mean": 300.0
+      },
+      "Process temperature [K]": {
+        "min": 305.7,
+        "max": 313.8,
+        "mean": 310.01
+      },
+      "Rotational speed [rpm]": {
+        "min": 1168.0,
+        "max": 2886.0,
+        "mean": 1538.78
+      },
+      "Torque [Nm]": {
+        "min": 3.8,
+        "max": 76.6,
+        "mean": 39.99
+      },
+      "Tool wear [min]": {
+        "min": 0.0,
+        "max": 253.0,
+        "mean": 107.95
+      }
+    },
+    "correlations": {
+      "torque_vs_rpm": -0.875,
+      "air_vs_process_temp": 0.876
+    },
+    "train_rows": 8000,
+    "test_rows": 2000,
+    "test_positives": 68
+  },
+  "metrics": {
+    "baseline": {
+      "roc_auc": 0.9678,
+      "pr_auc": 0.7718,
+      "brier": 0.0156,
+      "at_0.5": {
+        "precision": 0.731,
+        "recall": 0.721,
+        "f1": 0.726,
+        "tp": 49,
+        "fp": 18,
+        "fn": 19,
+        "tn": 1914
+      },
+      "best_f1_threshold": 0.615,
+      "at_best_f1": {
+        "precision": 0.849,
+        "recall": 0.662,
+        "f1": 0.744,
+        "tp": 45,
+        "fp": 8,
+        "fn": 23,
+        "tn": 1924
+      },
+      "per_mode": {
+        "TWF": {
+          "n": 10,
+          "flagged_at_0.5": 0.1,
+          "mean_prob": 0.241
+        },
+        "HDF": {
+          "n": 29,
+          "flagged_at_0.5": 0.897,
+          "mean_prob": 0.731
+        },
+        "PWF": {
+          "n": 13,
+          "flagged_at_0.5": 0.923,
+          "mean_prob": 0.802
+        },
+        "OSF": {
+          "n": 16,
+          "flagged_at_0.5": 0.75,
+          "mean_prob": 0.661
+        },
+        "RNF": {
+          "n": 4,
+          "flagged_at_0.5": 0.0,
+          "mean_prob": 0.179
+        }
+      },
+      "params": {
+        "class_weight": "balanced",
+        "max_depth": null,
+        "max_features": "sqrt",
+        "min_samples_leaf": 1,
+        "n_estimators": 200
+      }
+    },
+    "tuned": {
+      "roc_auc": 0.9719,
+      "pr_auc": 0.8002,
+      "brier": 0.0297,
+      "at_0.5": {
+        "precision": 0.43,
+        "recall": 0.897,
+        "f1": 0.581,
+        "tp": 61,
+        "fp": 81,
+        "fn": 7,
+        "tn": 1851
+      },
+      "best_f1_threshold": 0.83,
+      "at_best_f1": {
+        "precision": 0.8,
+        "recall": 0.706,
+        "f1": 0.75,
+        "tp": 48,
+        "fp": 12,
+        "fn": 20,
+        "tn": 1920
+      },
+      "per_mode": {
+        "TWF": {
+          "n": 10,
+          "flagged_at_0.5": 0.6,
+          "mean_prob": 0.454
+        },
+        "HDF": {
+          "n": 29,
+          "flagged_at_0.5": 0.966,
+          "mean_prob": 0.896
+        },
+        "PWF": {
+          "n": 13,
+          "flagged_at_0.5": 0.923,
+          "mean_prob": 0.91
+        },
+        "OSF": {
+          "n": 16,
+          "flagged_at_0.5": 1.0,
+          "mean_prob": 0.856
+        },
+        "RNF": {
+          "n": 4,
+          "flagged_at_0.5": 0.5,
+          "mean_prob": 0.369
+        }
+      },
+      "params": {
+        "class_weight": "balanced",
+        "max_depth": 10,
+        "max_features": 0.6,
+        "min_samples_leaf": 5,
+        "n_estimators": 170
+      }
+    }
+  },
+  "cv_on_train": {
+    "folds": [
+      0.9888,
+      0.9742,
+      0.9603,
+      0.9825,
+      0.9645
+    ],
+    "mean": 0.9741,
+    "std": 0.0107
+  },
+  "permutation_importance": {
+    "Tool wear [min]": 0.118,
+    "Rotational speed [rpm]": 0.0917,
+    "Torque [Nm]": 0.0683,
+    "Air temperature [K]": 0.066,
+    "Process temperature [K]": 0.0086
+  },
+  "ablation_type_feature": {
+    "roc_auc_with_type": 0.9741,
+    "delta_vs_five_sensors": 0.0022
+  },
+  "shap": {
+    "Torque [Nm]": {
+      "mean_abs": 0.1732,
+      "direction_corr": 0.345
+    },
+    "Rotational speed [rpm]": {
+      "mean_abs": 0.1512,
+      "direction_corr": -0.393
+    },
+    "Tool wear [min]": {
+      "mean_abs": 0.1384,
+      "direction_corr": 0.508
+    },
+    "Air temperature [K]": {
+      "mean_abs": 0.0656,
+      "direction_corr": 0.511
+    },
+    "Process temperature [K]": {
+      "mean_abs": 0.0199,
+      "direction_corr": -0.224
+    }
+  }
+}

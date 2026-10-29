@@ -1,0 +1,9 @@
+# Versions the reported numbers were produced with (Python 3.13).
+pandas==3.1.0
+numpy==2.5.4
+scikit-learn==1.9.1
+shap==0.54.1
+optuna==5.0.0
+matplotlib==3.11.2
+joblib==1.6.0
+pytest==9.2.0
