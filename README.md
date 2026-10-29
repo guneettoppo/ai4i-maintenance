@@ -1,11 +1,9 @@
 # AI4I 2020 Predictive Maintenance — Full ML Pipeline
 
-Reference: *Explainable AI for Predictive Maintenance Applications* (PDF) guided methodology (XAI + predictive maintenance).
-
 ## Why These Choices
 - Random Forest ensemble: handles imbalanced failure class (~3.4%) without overfitting.
 - Optuna tuning: best trial `n=122, d=12`, AUC 0.976.
-- SHAP explainability: matches paper's XAI focus — sensor-level drivers.
+- SHAP explainability: interpretable sensor-level failure drivers.
 
 ```mermaid
 flowchart TD
